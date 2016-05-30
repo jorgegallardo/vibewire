@@ -8,7 +8,6 @@ var morgan = require('morgan');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/public'));
 
 MongoClient.connect(url, function(err, db) {
   //ensure that we've connected
@@ -28,13 +27,21 @@ app.post('/register', function(req, res, next) {
   return res.send();
 });
 
+app.use(express.static(__dirname + '/public'));
+
+// redirect for front end routes
+app.get('*', function(req, res) {
+  return res.redirect('/#!' + req.originalUrl);
+});
+
+
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   var status = 500;
   if(err.status) status = err.status;
   var message = err.toString();
   if(err.message) message = err.message;
-  res.status(400);
+  res.status(status);
   return res.send(message);
 });
 

@@ -1,5 +1,8 @@
 angular.module('vibewire', ['ngRoute'])
-.config(['$routeProvider', function($routeProvider) {
+.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+
+  $locationProvider.html5Mode(true).hashPrefix('!');
+
   //set up routes
   $routeProvider
     .when('/', {
