@@ -9,10 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.5.6",
-    "angular-route": "^1.5.6",
     "body-parser": "^1.15.1",
-    "bootstrap": "^3.3.6",
     "express": "^4.13.4",
     "mongodb": "^2.1.20",
     "morgan": "^1.7.0"
